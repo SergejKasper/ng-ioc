@@ -1,0 +1,9 @@
+{
+  "name": "ng-ioc",
+  "version": "0.0.0",
+  "description": "Angular JS Typescript Dependency Injection with annotations",
+  "main": "dist/main.js",
+  "dependencies": {},
+  "devDependencies": {}
+}
+
