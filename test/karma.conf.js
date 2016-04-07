@@ -26,13 +26,15 @@ module.exports = function (config) {
     },
 
     meta: {
-    'src/*': { format: 'register' }
+    'src/*': { format: 'amd' },
+    'examples/*': { format: 'amd' },
+    'test/*': { format: 'amd' }
   },
 
     // list of files / patterns to exclude
     exclude: [],
 
-    port: 9999,
+    port: 8899,
 
     browsers: [
       'Chrome'
@@ -55,7 +57,7 @@ module.exports = function (config) {
     ],
 
     // Continuous Integration mode if true, it capture browsers, run tests and exit
-    singleRun: true,
+    //singleRun: true,
 
     colors: true,
 
