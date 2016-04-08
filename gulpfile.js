@@ -32,7 +32,7 @@ gulp.task('bump', require('./tasks/bump')(gulp));
 
 // watch scripts, styles, and templates
 gulp.task('watch', function() {
-  gulp.watch([conf.ts.src, conf.ts.example],['build']);
+  gulp.watch([conf.ts.src, conf.ts.example],['compile-examples','test']);
 });
 
 // default

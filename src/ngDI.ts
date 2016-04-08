@@ -2,7 +2,7 @@
 /// <reference path="../typings/main/ambient/angular/index.d.ts" />
 import {ngIOC} from "./ngIOC";
 //export namespace ngDI {
-class ngDI extends ngIOC {
+class ngDI extends ngIOC implements IngDI {
   public bindModule: ng.IModule;
   public bindModuleRoot: ng.IModule;
   public injector: any;
@@ -14,7 +14,7 @@ class ngDI extends ngIOC {
     var nsArr = componentNamespace.split(".");
     this.componentName = nsArr.pop();
     this.bindModuleName = nsArr.join(".");
-    this.bindModule = angular.module(this.bindModuleName);
+    this.bindModule = ngIOC.bindModule(); //angular.module(this.bindModuleName);
   }
   public directive = (...values: any[]): any => {
     var decorated = (target: Function) => {
@@ -54,7 +54,7 @@ class ngDI extends ngIOC {
       }
       return dependency;
     });
-    this.bindModule[injectType](this.componentName, comp());
+    this.bindModule[injectType](this.componentName, comp);
     console.log(`registered ${this.componentName} on ${this.bindModuleName} as ${injectType}`)
     target.componentName = this.componentName;
     return target;
@@ -80,7 +80,6 @@ enum INJECT_TYPE {
   Service = <any>"service",
   Controller = <any>"controller",
 }
- export default function(moduleString:string) {
-  return () => new ngDI(moduleString);
-}
+
+export default (moduleString) => {return new ngDI(moduleString)};
 //}

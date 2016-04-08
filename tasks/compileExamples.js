@@ -12,8 +12,7 @@ module.exports = (gulp, srcs, dist) => () => {
         target: 'ES5',
         module: 'amd',
         experimentalDecorators: true,
-        emitDecoratorMetadata: true,
-        sourceMap: true
-    })).pipe(sourcemaps.write()).pipe(gulp.dest(dist[i]))
+        emitDecoratorMetadata: true
+    })).pipe(sourcemaps.write(".")).pipe(gulp.dest(dist[i]))
   })
 };

@@ -18,6 +18,7 @@ module.exports = function (config) {
         'src/**/*.*.map',
         'examples/**/*.*',
         'examples/**/*.*.map',
+        'test/**/*.*.map',
         'test/resources/*.png'
       ],
       loadFiles: [
@@ -25,11 +26,11 @@ module.exports = function (config) {
       ]
     },
 
-    /*meta: {
+    meta: {
     'src/*': { format: 'amd' },
     'examples/*': { format: 'amd' },
     'test/*': { format: 'amd' }
-  },*/
+  },
 
     // list of files / patterns to exclude
     exclude: [],

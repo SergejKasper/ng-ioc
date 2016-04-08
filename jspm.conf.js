@@ -1,39 +1,47 @@
 System.config({
   defaultJSExtensions: true,
-  transpiler: "typescript",
-  typescriptOptions: {
-    "tsconfig": "src/tsconfig.json"
-  },
+  format: "amd",
   paths: {
     "github:*": "vendor/jspm_packages/github/*",
     "npm:*": "vendor/jspm_packages/npm/*",
-    "app/*": "src/*"
+    "app/*": ["src/*", "examples/*"],
+    "test/*": "test/*"
   },
-
-  packages: {
+  /*packages: {
     "app": {
       "main": "index",
-      "format": "amd",
-      "defaultExtension": "js"
+      "format": "systemjs",
+      "defaultExtension": "ts",
+      "meta": {
+        "*.ts": {
+          "loader": "ts"
+        }
+      }
     }
-  },
-
+  },*/
+  packages: {
+      'app': {
+        'main': 'index',
+        'format': 'amd',
+        'defaultExtension': 'js'
+      }
+    },
   map: {
     "angular": "github:angular/bower-angular@1.5.3",
     "angular-animate": "github:angular/bower-angular-animate@1.4.8",
     "angular-mocks": "github:angular/bower-angular-mocks@1.5.3",
-    "angular-ui-router": "github:angular-ui/ui-router@0.2.18",
-    "bootstrap": "github:twbs/bootstrap@3.3.6",
+    /*"angular-ui-router": "github:angular-ui/ui-router@0.2.18",
+    "bootstrap": "github:twbs/bootstrap@3.3.6",*/
     "clean-css": "npm:clean-css@3.4.10",
     "css": "github:systemjs/plugin-css@0.1.20",
     "ts": "github:frankwallis/plugin-typescript@4.0.5",
     "typescript": "npm:typescript@1.8.9",
-    "github:angular-ui/ui-router@0.2.18": {
+    /*"github:angular-ui/ui-router@0.2.18": {
       "angular": "github:angular/bower-angular@1.5.3"
     },
     "github:angular/bower-angular-animate@1.4.8": {
       "angular": "github:angular/bower-angular@1.5.3"
-    },
+    },*/
     "github:angular/bower-angular-mocks@1.5.3": {
       "angular": "github:angular/bower-angular@1.5.3"
     },

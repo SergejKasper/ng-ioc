@@ -3,7 +3,7 @@
 /// <reference path="../typings/main/ambient/angular/index.d.ts" />
 /// <reference path="../typings/main/ambient/angular-ui-router/index.d.ts" />
 /// <reference path="../typings/main/ambient/angular-mocks/index.d.ts" />
-
+/*
 import * as angular from "angular";
 import ngDI from "../src/ngDI";
 import {ngIOC} from "../src/ngIOC";
@@ -24,13 +24,6 @@ var App = (function (){
   "ngResource",
   "ngMock"]);
   var appModule:ng.IModule = angular.module("app", dependencies);
-  ngIOC.defaultModule = appModule;
-
-  angular.module('app', [
-    ngMock,
-    ngMockE2E,
-    angularAnimate
-  ]);
 
   angular.element(document).ready(() => {
     angular.bootstrap(document, [
@@ -40,5 +33,5 @@ var App = (function (){
 
   return ng;
 })();
-
-export default () =>  App;
+*/
+export default () =>  {};
