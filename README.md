@@ -5,3 +5,7 @@
 Install through bower:
 
         bower install ng-ioc
+```
+npm install
+jspm dl-loader
+```

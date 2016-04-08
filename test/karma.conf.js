@@ -25,11 +25,11 @@ module.exports = function (config) {
       ]
     },
 
-    meta: {
+    /*meta: {
     'src/*': { format: 'amd' },
     'examples/*': { format: 'amd' },
     'test/*': { format: 'amd' }
-  },
+  },*/
 
     // list of files / patterns to exclude
     exclude: [],

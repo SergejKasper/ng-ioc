@@ -2,84 +2,37 @@
 'use strict';
 
 var gulp = require('gulp'),
-  concat = require('gulp-concat'),
   del = require('del'),
   util = require('gulp-util'),
-  es = require('event-stream'),
-  ts = require('gulp-typescript'),
-  bump = require('gulp-bump'),
-  git = require('gulp-git'),
+  path = require('path'),
   filter = require('gulp-filter'),
-  tagVersion = require('gulp-tag-version'),
-  inquirer = require('inquirer');
+  tagVersion = require('gulp-tag-version');
 
-var sources = {
-  app: {
-    ts: ['./src/**/*.ts'],
-  }
+var conf = {
+    ts: {
+      src: './src/**/*.ts',
+      example: './examples/**/*.ts',
+      dist: ['./examples/', './src/']
+    },
+    docs: path.join(__dirname, 'docs'),
+    tests: path.join(__dirname, 'test'),
+    packageJson: require(path.join(__dirname, 'package.json')),
+    tsConfig: require(path.join(__dirname, 'src/tsconfig.json'))
 };
 
-var destinations = {
-  js: './dist/'
-};
-
-gulp.task('js:app', function() {
-  var tsStream = gulp.src(sources.app.ts)
-    .pipe(ts({
-      declarationFiles: false,
-      noExternalResolve: true
-    }));
-
-  es.merge(
-    tsStream.dts.pipe(gulp.dest(destinations.js)),
-    tsStream.js
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest(destinations.js))
-  );
-});
-
+gulp.task('test', require('./tasks/test-unit')(conf.tests));
+gulp.task('compile-examples', require('./tasks/compileExamples')(gulp, [conf.ts.example, conf.ts.src], conf.ts.dist));
 // deletes the dist folder for a clean build
-gulp.task('clean', function() {
-  del(['./dist'], function(err, deletedFiles) {
-    if(deletedFiles.length) {
-      util.log('Deleted', util.colors.red(deletedFiles.join(' ,')) );
-    } else {
-      util.log(util.colors.yellow('/dist directory empty - nothing to delete'));
-    }
-  });
-});
+//gulp.task('generate-typeinfo', require('./tasks/generateTypeinfo')(gulp, conf));
+gulp.task('clean', require('./tasks/clean')(gulp, conf.ts.dist));
 
-gulp.task('build', [
-  'js:app'
-]);
+gulp.task('build', ['clean', 'compile-examples','test']);
 
-gulp.task('bump', function() {
-
-  var questions = [
-    {
-      type: 'input',
-      name: 'bump',
-      message: 'Are you sure you want to bump the patch version? [Y/N]'
-    }
-  ];
-
-  inquirer.prompt( questions, function( answers ) {
-    if(answers.bump === 'Y') {
-
-      return gulp.src(['./package.json', './bower.json'])
-          .pipe(bump({type: 'patch'}))
-          .pipe(gulp.dest('./'))
-          .pipe(git.commit('bump patch version'))
-          .pipe(filter('package.json'))  // read package.json for the new version
-          .pipe(tagVersion());           // create tag
-
-    }
-  });
-});
+gulp.task('bump', require('./tasks/bump')(gulp));
 
 // watch scripts, styles, and templates
 gulp.task('watch', function() {
-  gulp.watch(sources.app.ts, ['js:app']);
+  gulp.watch([conf.ts.src, conf.ts.example],['build']);
 });
 
 // default
