@@ -1,7 +1,7 @@
 import Endpoint from "./EndpointService";
 import {ngIOC} from "../../../src/ngIOC";
 
-@ngIOC("app.components.Data").service(Endpoint)
+@ngIOC("Data").service(Endpoint)
 export default class DataService {
   private static referers: string[] = [];
   constructor(private endpointService: Endpoint) {

@@ -1,7 +1,7 @@
 import {ngIOC} from "../../src/ngIOC";
 import Data from "../components/data/DataService";
 
-@ngIOC("app.BaseRun").run(Data)
+@ngIOC("BaseRun").run(Data)
 export default class BaseConfig {
   constructor(private dataService: Data) {
     console.log("Run Block is run");

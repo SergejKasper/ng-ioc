@@ -13,9 +13,9 @@ export class Resolver implements IResolver {
   public bindModuleName;
   public componentNamespace;
   constructor(componentNamespace: string) {
-    var nsArr = componentNamespace.split(".");
-    this.componentName = nsArr.pop();
-    this.bindModuleName = nsArr.join(".");
+    //var nsArr = componentNamespace.split(".");
+    this.componentName = componentNamespace;//nsArr.pop();
+    //this.bindModuleName = nsArr.join(".");
   }
   public directive(...values: any[]): any {
     return (target: ngIOCFunction) => {

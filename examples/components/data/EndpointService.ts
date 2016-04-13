@@ -1,6 +1,6 @@
 import {ngIOC} from "../../../src/ngIOC";
 
-@ngIOC("app.components.Endpoint").service()
+@ngIOC("Endpoint").service()
 export default class Endpoint {
 
   private loaded = false;

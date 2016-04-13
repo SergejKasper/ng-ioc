@@ -2,7 +2,7 @@
 import {ngIOC} from "../../../src/ngIOC";
 import Data from "../data/DataService";
 
-@ngIOC("app.components.header").directive("$location", "$rootScope", Data)
+@ngIOC("header").directive("$location", "$rootScope", Data)
 export default class Header implements ng.IDirective {
   public template = "<div> @directive works! </div>";
   //TODO: Mock HttpBackendService for templateUrl
