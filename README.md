@@ -15,7 +15,7 @@
 
 For a directive such as ```<my-directive>```:
 
-```
+```js
 import {ngIOC} from "bower_components/ng-ioc/src/ngIOC";
 import MyService from "../myService";
 
@@ -29,8 +29,8 @@ export default class My implements ng.IDirective {
 }
 ```
 For a service, controller, config- or run-block the convention is the same (Facories and Providers coming soon):
-```
-...
+```js
+
 @ngIOC("AppRun").run(LogService)
 export default class BaseConfig {
   constructor(private logService: LogService) {
@@ -40,12 +40,10 @@ export default class BaseConfig {
 
 ```
 The Dependency-Resolver of ng-ioc needs to be declared as a dependency on your app like this:
-```
+```js
 import {Resolver} from "bower_components/ng-ioc/src/ngIOC";
 
-angular.module("app", [
-  Resolver.module.name
-]);  
+angular.module("app", [ Resolver.module.name ]);  
 ```
 
 ## Get started
