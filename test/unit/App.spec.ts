@@ -35,7 +35,6 @@ beforeEach(() => {
 });
 
 beforeEach(inject(function($controller, $rootScope) {
-  window.console.log("--------- new Test -------")
   scope = $rootScope.$new();
   createController = function() {
     return $controller('HomeController', {
