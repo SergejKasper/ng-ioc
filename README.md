@@ -11,6 +11,14 @@
 - This repo is in alpha state. Though the functionality works as described, the api is subject to change
 - Config and Run-Blocks are executed multiple times on the module
 
+## Get started
+
+Install through bower:
+
+        bower install ng-ioc
+
+Take a look at the section below (or consider how stuff is included in the tests and in the ```example``` subfolder).
+
 ## Examples
 
 For a directive such as ```<my-directive>```:
@@ -46,17 +54,9 @@ import {Resolver} from "bower_components/ng-ioc/src/ngIOC";
 angular.module("app", [ Resolver.module.name ]);  
 ```
 
-## Get started
+##Contribute
 
-Install through bower:
-
-        bower install ng-ioc
-
-Take a look at the section above and consider how stuff is included in the tests.
-
-
-
-To see the example passing tests clone this project and run in the folder:
+To develop on the project and see the example passing tests clone it, ```cd``` in there and run:
 
         npm install
         jspm dl-loader
