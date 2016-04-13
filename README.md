@@ -8,7 +8,8 @@
 
 ## Important!
 
-- This repo is in beta state, stuff works mostly though api changes
+- This repo is in alpha state. Though the functionality works as described, the api is subject to change
+- Config and Run-Blocks are executed multiple times on the module
 
 ## Examples
 
@@ -47,14 +48,14 @@ angular.module("app", [
 ]);  
 ```
 
-
 ## Get started
 
 Install through bower:
 
         bower install ng-ioc
 
-Take a look at the example folder and see how stuff is included in the tests.
+Take a look at the section above and consider how stuff is included in the tests.
+
 
 
 To see the example passing tests clone this project and run in the folder:
@@ -63,10 +64,12 @@ To see the example passing tests clone this project and run in the folder:
         jspm dl-loader
         gulp build
 
+##Thanks!
+[b091's](https://github.com/b091) work on the [ts-skeleton](https://github.com/b091/ts-skeleton) was absolutely crucial for this repo to get going.
 ## Roadmap
 
-- Extended ngModule support up soon.
-- Annotations for Providers and Factories.
+- Extended ngModule support up soon
+- Annotations for Providers and Factories are coming
 - Better Testcoverage and app-example
 
 ## License
