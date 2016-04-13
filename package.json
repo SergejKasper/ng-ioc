@@ -2,7 +2,7 @@
   "name": "ng-ioc",
   "version": "0.0.0",
   "description": "AngularJS Typescript Dependency Injection with annotations",
-  "main": "dist/main.js",
+  "main": "src/ngIOC.ts",
   "dependencies": {
     "angular-animate": "^1.5.3",
     "typings": "^0.7.12"

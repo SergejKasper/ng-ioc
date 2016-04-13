@@ -1,19 +1,13 @@
-import ngDI from "../../../src/ngDI";
+import {ngIOC} from "../../../src/ngIOC";
 
-@ngDI("app.components.Endpoint").service()
+@ngIOC("app.components.Endpoint").service()
 export default class Endpoint {
 
+  private loaded = false;
   constructor() {
-    console.log("loaded")
+    this.loaded = true;
   }
-
-  public baseUri: string = "http://localhost:3000/api/";
-
-  public getUrl(moduleName: string): string {
-    return this.baseUri + moduleName + ".json";
-  }
-
-  public getUrlForId(moduleName: string, id: number): string {
-    return this.getUrl(moduleName) + "/" + id;
+  public isLoaded() {
+    return this.loaded;
   }
 }

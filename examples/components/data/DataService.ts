@@ -1,14 +1,15 @@
 import Endpoint from "./EndpointService";
-import ngDI from "../../../src/ngDI";
+import {ngIOC} from "../../../src/ngIOC";
 
-@ngDI("app.components.Data").service(Endpoint)
+@ngIOC("app.components.Data").service(Endpoint)
 export default class DataService {
-
+  private static referers: string[] = [];
   constructor(private endpointService: Endpoint) {
-    console.log("Log URI: " + endpointService.baseUri);
+    console.log("Is the Endpoint Service loaded: " + endpointService.isLoaded());
   }
-  public sayHallo() {
-    console.log("Hey!");
+  public calledIn(referer: string) {
+    DataService.referers.push(referer);
+    console.log("DataService called in: " + DataService.referers.join(" | "));
   }
 
 }
