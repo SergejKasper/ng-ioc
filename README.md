@@ -4,6 +4,7 @@
 
 - Use all the goodies of Typescript-Classes for your Directives, Services, Controllers, Config-Blocks, Run-Blocks
 - Manage your DI cleanly, easily and predictably in an es6-module environment
+- Lazyload dependencies on multiple modules with ease
 - Leverage all the advantages of angular-typings
 
 ## Important!
@@ -27,7 +28,7 @@ For a directive such as ```<my-directive>```:
 import {ngIOC} from "bower_components/ng-ioc/src/ngIOC";
 import MyService from "../myService";
 
-@ngIOC("MyDirective").directive("$location", MyService)
+@ngIOC("app.components.MyDirective").directive("$location", MyService)
 export default class My implements ng.IDirective {
   public templateUrl:string = "mytemplate.html";
   ...
@@ -39,7 +40,7 @@ export default class My implements ng.IDirective {
 For a service, controller, config- or run-block the convention is the same (Facories and Providers coming soon):
 ```js
 
-@ngIOC("AppRun").run(LogService)
+@ngIOC("app.services.AppRun").run(LogService)
 export default class BaseConfig {
   constructor(private logService: LogService) {
     logService.clog("we're up!");
@@ -51,7 +52,10 @@ The Dependency-Resolver of ng-ioc needs to be declared as a dependency on your a
 ```js
 import {Resolver} from "bower_components/ng-ioc/src/ngIOC";
 
-angular.module("app", [ Resolver.module.name ]);  
+angular.module("app", [
+  Resolver.registerModule("app.components"), // creates and decorates corresponding angular.module
+  Resolver.registerModule("app.services", myServiceMockModule) //uses existing angular.module
+ ]);  
 ```
 
 ##Contribute
@@ -66,7 +70,7 @@ To develop on the project and see the example passing tests clone it, ```cd``` i
 [b091's](https://github.com/b091) work on the [ts-skeleton](https://github.com/b091/ts-skeleton) was absolutely crucial for this repo to get going.
 ## Roadmap
 
-- Extended ngModule support up soon
+- Extended ngModule support up soon <span style="color: green"> DONE! </span>
 - Annotations for Providers and Factories are coming
 - Better Testcoverage and app-example
 

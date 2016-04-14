@@ -1,15 +1,15 @@
 import Endpoint from "./EndpointService";
 import {ngIOC} from "../../../src/ngIOC";
 
-@ngIOC("Data").service(Endpoint)
+@ngIOC("components.data.Data").service(Endpoint)
 export default class DataService {
-  private static referers: string[] = [];
+  private referers: string[] = [];
   constructor(private endpointService: Endpoint) {
     console.log("Is the Endpoint Service loaded: " + endpointService.isLoaded());
   }
   public calledIn(referer: string) {
-    DataService.referers.push(referer);
-    console.log("DataService called in: " + DataService.referers.join(" | "));
+    this.referers.push(referer);
+    console.log("DataService called in: " + this.referers.join(" | "));
   }
 
 }

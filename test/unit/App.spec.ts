@@ -18,14 +18,17 @@ var scope, createController;
 BaseRun;
 BaseConfig;
 
+angular.module("app", [
+  Resolver.registerModule("views"),
+  Resolver.registerModule("components.data"),
+  Resolver.registerModule("components.header"),
+  ngMock,
+  ngMockE2E,
+  ngAnimateMock
+]);
+
 beforeEach(() => {
   window.console.log("--------- new Test -------")
-  angular.module("app", [
-    Resolver.module.name,
-    ngMock,
-    ngMockE2E,
-    ngAnimateMock
-  ]);
   angular.mock.module("app");
   angular.element(document).ready(() => {
     angular.bootstrap(document, [
