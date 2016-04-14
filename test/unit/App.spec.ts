@@ -46,13 +46,7 @@ beforeEach(inject(function($controller, $rootScope) {
   };
 }));
 
-describe("App", () => {
-  describe("during initialization", () => {
-    it("is has injector", () => {
-      chai.assert(Resolver.module);
-    });
-  });
-});
+
 describe("Directive", () => {
   describe("during initialization", () => {
 
